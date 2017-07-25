@@ -7,6 +7,8 @@ output: html_notebook
 #analyzing the GLobal Terrorist Activities
 require(data.table)
 require(readr) #to read data faster
+require(ggplot2)
+
 
 terror<-read_csv("F:/globalterrorismdb_0617dist.csv")
 
@@ -26,12 +28,21 @@ summary(terror)
 
 Starting with Descriptive Analytics
 
-
 ```{r}
 #checking how many terrorist attacks were successfull
-
 table(terror$success)
+
+success<-as.data.frame(table(terror$success))
+success$Var1<-ifelse(success$Var1==1,"Successful","Unsuccessful")
+names(success)<-c("Attack","count")
 #almost 90% of all attacks were successfull
+ggplot(aes(x = Attack,y=count), data = success) + 
+  geom_col(width=0.5,color="black",fill="purple",alpha=0.5) + 
+  labs(x = "Attack",y="Count",title="Distrubution of Successful and Unsuccessful attacks from 1970-2015")
+
 
 ```
+Most of the attacks in the past were successfully executed.
+
+
 
