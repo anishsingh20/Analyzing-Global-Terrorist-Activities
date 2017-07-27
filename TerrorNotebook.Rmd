@@ -86,8 +86,13 @@ plot + coord_polar(theta ="y" , start = 0)  + scale_color_brewer(palette = "Set1
 
 
 
+#Making a Bar plot
+theme_set(theme_grey())
 
-
+ggplot(aes(x = reorder(Type_of_Attack,PerSuccessful),y = PerSuccessful),data = attackdf) + 
+  geom_col(color="black",fill="red",alpha=0.6) + 
+  coord_flip() + 
+  labs(title="Barplot of Types of Attacks and Successful attacks",x="Type of Attack",y="Percentage of Successful Attacks")
           
 
 
