@@ -54,7 +54,22 @@ Aggregating and summarising data.
 table(terror$attacktype1_txt)
 #Most common terror attack is Bombing/Explosion
 
-table(terror$attacktype1_txt,terror$success)
+#Finding Succcessful attacks and their attack types
+#percentage of Successful and unsuccessful attacks
+#converting to a data frame
+attackdf<-data.frame(round(prop.table(table(terror$attacktype1_txt,
+                                      terror$success))*100,2))
+#Spreading the data frame
+attackdf<-attackdf %>% spread(key = Var2,Freq) 
+colnames(attackdf)<-c("Type_of_Attack","Per_Unsuccessful_Attack","Per_Successful_Attack")
+attackdf
+
+
+
+
+          
+
+
 
 
 ```
