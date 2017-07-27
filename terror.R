@@ -14,5 +14,10 @@ summary(terror)
 
 #checking how many terrorist attacks were successfull
 
-table(terror$success)
+success<-as.data.frame(table(terror$success))
+success$Var1<-ifelse(success$Var1==1,"Successful","Unsuccessful")
+names(success)<-c("Attack","count")
 #almost 90% of all attacks were successfull
+
+ggplot(aes(x = Attack,y=count), data = success) + 
+  geom_col(width=0.5,color="black",fill="purple")

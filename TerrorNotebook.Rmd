@@ -44,5 +44,20 @@ ggplot(aes(x = Attack,y=count), data = success) +
 ```
 Most of the attacks in the past were successfully executed.
 
+---------------
+
+####Analyzing what types of Attacks were done
+
+Aggregating and summarising data.
+
+```{r}
+table(terror$attacktype1_txt)
+#Most common terror attack is Bombing/Explosion
+
+table(terror$attacktype1_txt,terror$success)
+
+
+```
+
 
 
