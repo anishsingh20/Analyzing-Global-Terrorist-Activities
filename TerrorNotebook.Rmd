@@ -8,6 +8,9 @@ output: html_notebook
 require(data.table)
 require(readr) #to read data faster
 require(ggplot2)
+#Data preprocessing and Transformation packages
+require(dplyr)
+require(tidyr)
 
 
 terror<-read_csv("F:/globalterrorismdb_0617dist.csv")
@@ -105,5 +108,17 @@ Kidnapping,Armed Assaults, Bombings__*.
 
 
 ----------------
+
+####Analyzing the Countires and the Terrorist attacks took place 
+
+```{r}
+countrydf<-data.frame(table(terror$success,terror$country_txt))
+#Spreading the Dataframe
+countrydf<-countrydf %>% spread(Var1,Freq)
+#renaming the columns
+names(countrydf)<-c("Country","Unsuccessful","Successful")
+
+```
+
 
 
