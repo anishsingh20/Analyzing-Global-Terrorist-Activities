@@ -137,10 +137,13 @@ TopFailsAttacks<- countrydf %>% group_by(Country) %>%
 #Countires with least Terrorist Attacks
 
 LeastAttackdf<-countrydf %>% group_by(Country) %>%
-      filter(TotalAttacks > 20 && TotalAttacks < 100) %>%
+      filter(TotalAttacks %in% seq(20,100)) %>%
       select(TotalAttacks) %>%
       top_n(30) %>%
       arrange(TotalAttacks)
+
+#New Zealand ,Malaysia, Hong Kong , Cuba ,UAE etc are countries having very less
+#Terrorist attacks less than 100 attempts.
 
 ```
 
