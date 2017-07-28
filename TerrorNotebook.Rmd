@@ -3,7 +3,7 @@ title: "Global Terrorism"
 output: html_notebook
 ---
 
-```{r}
+```{r,warning=FALSE,message=FALSE}
 #analyzing the GLobal Terrorist Activities
 require(data.table)
 require(readr) #to read data faster
@@ -100,5 +100,10 @@ ggplot(aes(x = reorder(Type_of_Attack,PerSuccessful),y = PerSuccessful),data = a
 
 ```
 
+As the Plot shows the Most Successful *__Terror Attacks were for Hostage Taking,
+Kidnapping,Armed Assaults, Bombings__*. 
+
+
+----------------
 
 
