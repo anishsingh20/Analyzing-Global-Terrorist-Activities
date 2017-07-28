@@ -118,6 +118,13 @@ countrydf<-countrydf %>% spread(Var1,Freq)
 #renaming the columns
 names(countrydf)<-c("Country","Unsuccessful","Successful")
 
+#FInding the Top countries with most succcessfully executed terror attacks
+
+Topcountrydf<- countrydf %>% group_by(Country) %>%
+        summarise(Mean_Successfull = mean(Successful)) %>%
+        top_n(20) %>%
+        arrange(desc(Mean_Successfull))
+
 ```
 
 
