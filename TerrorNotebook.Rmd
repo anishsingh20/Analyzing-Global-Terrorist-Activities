@@ -145,6 +145,16 @@ LeastAttackdf<-countrydf %>% group_by(Country) %>%
 #New Zealand ,Malaysia, Hong Kong , Cuba ,UAE etc are countries having very less
 #Terrorist attacks less than 100 attempts.
 
+
+#Plotting the Barplots
+theme_set(theme_classic())
+ggplot(aes(x = reorder(Country,Mean_Successfull) , y = Mean_Successfull),data = Topcountrydf) + 
+  geom_col(color="black",fill="#1111F7") + 
+  coord_flip() +
+  labs(x = "Countries",y="Successfull Terrorist Attacks from 1970-2015")
+
+
+
 ```
 
 
