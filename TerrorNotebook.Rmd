@@ -155,6 +155,18 @@ ggplot(aes(x = reorder(Country,Mean_Successfull) , y = Mean_Successfull),data = 
 
 
 
+#Countires with Most Unsuccessful Terror Attacks
+theme_set(theme_bw())
+ggplot(aes(x = reorder(Country,Mean_Unsuccessfull),y=Mean_Unsuccessfull),data = TopFailsAttacks) + 
+  geom_col(stat="identity",color="black",fill="#DEFD16") + 
+  coord_flip() +
+  labs(x = "Countries",y="Unsuccessful Terrorist Attacks from 1970-2015") + 
+  scale_y_continuous(limits = c(0,2100),breaks=seq(0,2100,200))
+
+
+
+
+
 ```
 
 
