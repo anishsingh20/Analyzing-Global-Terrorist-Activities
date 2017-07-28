@@ -115,6 +115,7 @@ Kidnapping,Armed Assaults, Bombings__*.
 countrydf<-data.frame(table(terror$success,terror$country_txt))
 #Spreading the Dataframe
 countrydf<-countrydf %>% spread(Var1,Freq)
+countrydf<-countrydf %>% mutate(TotalAttacks=Successful +Unsuccessful)
 #renaming the columns
 names(countrydf)<-c("Country","Unsuccessful","Successful")
 
@@ -124,6 +125,22 @@ Topcountrydf<- countrydf %>% group_by(Country) %>%
         summarise(Mean_Successfull = mean(Successful)) %>%
         top_n(20) %>%
         arrange(desc(Mean_Successfull))
+
+
+#Finding Countries with Most Unsuccessful Terror Attack attempts
+TopFailsAttacks<- countrydf %>% group_by(Country) %>%
+        summarise(Mean_Unsuccessfull = mean(Unsuccessful)) %>%
+        top_n(20) %>%
+        arrange(desc(Mean_Unsuccessfull))
+
+
+#Countires with least Terrorist Attacks
+
+LeastAttackdf<-countrydf %>% group_by(Country) %>%
+      filter(TotalAttacks > 20 && TotalAttacks < 100) %>%
+      select(TotalAttacks) %>%
+      top_n(30) %>%
+      arrange(TotalAttacks)
 
 ```
 
