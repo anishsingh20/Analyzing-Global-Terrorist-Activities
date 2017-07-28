@@ -165,6 +165,17 @@ ggplot(aes(x = reorder(Country,Mean_Unsuccessfull),y=Mean_Unsuccessfull),data = 
 
 
 
+#Countries with Least Terrorist Activities 
+theme_set(theme_bw())
+ggplot(aes(x = reorder(Country,TotalAttacks),y=TotalAttacks),data = LeastAttackdf) + 
+  geom_col(stat="count",color="black",fill="#DEFD16") + 
+  coord_flip() +
+  labs(x = "Countries",y="Unsuccessful Terrorist Attacks from 1970-2015") + 
+  
+
+
+
+
 
 
 ```
