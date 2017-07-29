@@ -168,10 +168,10 @@ ggplot(aes(x = reorder(Country,Mean_Unsuccessfull),y=Mean_Unsuccessfull),data = 
 #Countries with Least Terrorist Activities 
 
 leastFilter<- LeastAttackdf %>% 
-  filter(TotalAttacks > 50)
+  filter(TotalAttacks > 50) %>% top_n(20)
 #Bar plot for Countries having attacks > 50
 theme_set(theme_bw())
-ggplot(aes(x = reorder(Country,TotalAttacks),y=TotalAttacks),data = leastFilter) + 
+ggplot(aes(x = reorder(Country,-TotalAttacks),y=TotalAttacks),data = leastFilter) + 
   geom_col(stat="count",color="black",fill="#DEFD16") + 
   coord_flip() +
   labs(x = "Countries with Least Terrorist Attacks",y="Total Terrorist Attacks from 1970-2015")
@@ -180,6 +180,22 @@ ggplot(aes(x = reorder(Country,TotalAttacks),y=TotalAttacks),data = leastFilter)
 
 
 
+```
+
+
+---------------------
+
+
+###Analyzing attacks in India
+
+I will create a new data frame for India by filtering and selecting only the relevant columns from the original data frame.
+
+```{r}
+#All the terrorist attacks in INDIA
+indiaAttack<-terror %>%
+  filter(country_txt=="India") %>% select(provstate,city,summary,location,success,attacktype1_txt,targtype1_txt,gname,weaptype1_txt,nkill) 
+ 
+table(indiaAttack$provstate)
 
 
 ```
