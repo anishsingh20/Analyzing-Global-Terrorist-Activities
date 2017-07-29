@@ -194,9 +194,29 @@ I will create a new data frame for India by filtering and selecting only the rel
 #All the terrorist attacks in INDIA
 indiaAttack<-terror %>%
   filter(country_txt=="India") %>% select(provstate,city,summary,location,success,attacktype1_txt,targtype1_txt,gname,weaptype1_txt,nkill) 
- 
-table(indiaAttack$provstate)
 
+#Which state has most attacks 
+table(indiaAttack$provstate)
+indiastate<-data.frame(table(indiaAttack$provstate,
+                             indiaAttack$success))
+
+indiastate<-indiastate %>% spread(Var2,Freq)
+names(indiastate)<-c("state","Unsuccessful","successful")
+
+#plotting states and number of Successfull attacks
+ggplot(aes(x=reorder(state,successful),y=successful ),data = indiastate) + geom_col(color="black",fill="blue") + 
+  coord_flip() + 
+  scale_y_continuous(limits=c(0,2000),breaks=seq(0,2000,400)) + 
+  labs(x = "States",y="Successful terrorist attacks")
+#most successfull terrorist attacks in Jammu and Kashmir
+  
+
+
+
+ggplot(aes(x = reorder(provstate,nkill)),data = indiaAttack) + 
+  geom_bar(fill="green",color="black") + 
+  coord_flip()
+  
 
 ```
 
