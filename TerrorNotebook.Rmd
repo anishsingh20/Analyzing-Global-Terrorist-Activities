@@ -229,6 +229,20 @@ We have Punjab , J & K and Assam on the top with most Successful terrorist attac
 
 ```{r}
 #cities with most terrorist attacks
+citydf<-data.frame(table(indiaAttack$city,indiaAttack$success))
+citydf<-citydf %>%spread(Var2,Freq)
+names(citydf)<-c("city","unsuccess","success")
+
+#dataframe consisting of cities with top most count of successful attacks
+cityTopsuccess<-citydf %>% group_by(city) %>%
+  summarise(success = mean(success)) %>%
+  arrange(desc(success)) %>%
+  top_n(25)
+
+ggplot(aes(x = reorder(city,success) , y = success),data = cityTopsuccess) + 
+  geom_col(color="black",fill="#FE3C01") + 
+  coord_flip() + 
+  scale_y_continuous(limits=c(0,600),breaks=seq(0,600,100))
 
 
 
