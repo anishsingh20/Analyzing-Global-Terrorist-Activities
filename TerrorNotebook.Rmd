@@ -204,12 +204,17 @@ indiastate<-indiastate %>% spread(Var2,Freq)
 names(indiastate)<-c("state","Unsuccessful","successful")
 
 #plotting states and number of Successfull attacks
-ggplot(aes(x=reorder(state,successful),y=successful ),data = indiastate) + geom_col(color="black",fill="blue") + 
+ggplot(aes(x=reorder(state,successful),y=successful ),data = indiastate) + geom_col(color="black",fill="blue",alpha=0.6) + 
   coord_flip() + 
   scale_y_continuous(limits=c(0,2000),breaks=seq(0,2000,400)) + 
   labs(x = "States",y="Successful terrorist attacks")
 #most successfull terrorist attacks in Jammu and Kashmir
+#We have Punjab , J and K and Assam on the top with most Successfull attacks
   
+#number of kills
+ggplot(aes(x = reorder(provstate,nkill), y = nkill),data = na.omit(indiaAttack)) + geom_col(fill="#E63B10") + 
+  coord_flip() +
+  labs(x="State",y="Number of Kills from 1970-2015")
 
 
 
@@ -220,5 +225,13 @@ ggplot(aes(x = reorder(provstate,nkill)),data = indiaAttack) +
 
 ```
 
+We have Punjab , J & K and Assam on the top with most Successful terrorist attacks and maximum number of fatalities due to the terrorist activities occurred at Chattisgarh,Assam and J&K as well.
+
+```{r}
+#cities with most terrorist attacks
+
+
+
+```
 
 
