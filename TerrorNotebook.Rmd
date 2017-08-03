@@ -249,4 +249,25 @@ ggplot(aes(x = reorder(city,success) , y = success),data = cityTopsuccess) +
 
 ```
 
+-----------------------
+
+
+####Checking the type of attacks occured in India
+
+
+```{r}
+india_typeAttack<-with(indiaAttack,data.frame(table(attacktype1_txt,success)))
+#spreading the dataframe
+india_typeAttack<-india_typeAttack %>% spread(success,Freq)
+india_typeAttack
+#Most Bombings occured in india followed by armed assaults.
+
+names(india_typeAttack)<-c("type","fail","success")
+
+#plotting barplots now
+
+
+
+
+```
 
