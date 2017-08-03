@@ -298,9 +298,12 @@ ggplot(aes(x = reorder(target,total),y=total),data=target_india) +
 #Most attacks targetted for Private citizens and property followed by police and goverment
 
 
+#---------Most successful targets----------#
+theme_set(theme_classic())
 
-
-
+ggplot(aes(x = reorder(target,successRate),y=successRate),data=target_india) +
+  geom_col(width=0.7,color="black",fill="#F22424",alpha=0.7) + coord_flip() +
+  labs(x="Target of Terror attacks",y="% of Successul Attacks")
 
 ```
 
