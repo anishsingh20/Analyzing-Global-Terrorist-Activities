@@ -239,11 +239,12 @@ cityTopsuccess<-citydf %>% group_by(city) %>%
   arrange(desc(success)) %>%
   top_n(25)
 
+#Plot for cities with most successful attacks added
 ggplot(aes(x = reorder(city,success) , y = success),data = cityTopsuccess) + 
   geom_col(color="black",fill="#FE3C01") + 
   coord_flip() + 
-  scale_y_continuous(limits=c(0,600),breaks=seq(0,600,100))
-
+  scale_y_continuous(limits=c(0,600),breaks=seq(0,600,100)) +
+  labs(x="city name",y="Count of Successful terrorist attacks")
 
 
 ```
