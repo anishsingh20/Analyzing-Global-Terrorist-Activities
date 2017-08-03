@@ -266,7 +266,9 @@ names(india_typeAttack)<-c("type","fail","success")
 india_typeAttack<-india_typeAttack%>% mutate(successRate=round((success/(success+fail))*100,2) , failRate=round((fail/(success+fail))*100,2))
 
 #plotting barplots now
-ggplot()
+ggplot(aes(y = successRate , x = reorder(type,successRate)),data = india_typeAttack) + geom_col(width=0.8,fill='#0000A4',alpha=0.7) +
+  coord_flip() +
+  labs(x="Type of attack",y="Success Rate of Attacks(in %)")
 
 
 
