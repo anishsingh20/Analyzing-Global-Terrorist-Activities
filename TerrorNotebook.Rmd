@@ -277,4 +277,30 @@ ggplot(aes(y = successRate , x = reorder(type,successRate)),data = india_typeAtt
 
 The surprising thing is that the __Bombings/Explosions__ have the highest distribution i.e highest count amongst all other types of terror attacks but their success rate is less.The terrorist activity having highest success rate is __unarmed assaults__.
 
+---------------------------
+
+
+#### Analyzing the Target of the Terrorist activities
+
+
+```{r}
+
+target_india<-with(indiaAttack,data.frame(table(targtype1_txt,success)))
+target_india<-target_india %>% spread(success,Freq)
+names(target_india)<-c("target","fail","success")
+target_india<-target_india%>% mutate(total=fail+success,successRate=round((success/(success+fail))*100,2) , failRate=round((fail/(success+fail))*100,2))
+
+#barplot with distribution of the most attacks in and its target
+ggplot(aes(x = reorder(target,total),y=total),data=target_india) + 
+  geom_bar(stat="identity",color="white",fill="#FE0202") +
+  coord_flip() +
+  labs(x ="Target Type ", y ="Total number of terror attacks")
+#Most attacks targetted for Private citizens and property followed by police and goverment
+
+
+
+
+
+
+```
 
