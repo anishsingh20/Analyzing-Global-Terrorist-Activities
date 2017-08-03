@@ -193,7 +193,7 @@ I will create a new data frame for India by filtering and selecting only the rel
 ```{r}
 #All the terrorist attacks in INDIA
 indiaAttack<-terror %>%
-  filter(country_txt=="India") %>% select(provstate,city,summary,location,success,attacktype1_txt,targtype1_txt,gname,weaptype1_txt,nkill) 
+  filter(country_txt=="India") %>% select(iyear,provstate,city,summary,location,success,attacktype1_txt,targtype1_txt,gname,weaptype1_txt,nkill) 
 
 #Which state has most attacks 
 table(indiaAttack$provstate)
@@ -241,7 +241,7 @@ cityTopsuccess<-citydf %>% group_by(city) %>%
 
 #Plot for cities with most successful attacks added
 ggplot(aes(x = reorder(city,success) , y = success),data = cityTopsuccess) + 
-  geom_col(color="black",fill="#FE3C01") + 
+  geom_col(fill="#FE3C01") + 
   coord_flip() + 
   scale_y_continuous(limits=c(0,600),breaks=seq(0,600,100)) +
   labs(x="city name",y="Count of Successful terrorist attacks")
@@ -302,8 +302,12 @@ ggplot(aes(x = reorder(target,total),y=total),data=target_india) +
 theme_set(theme_classic())
 
 ggplot(aes(x = reorder(target,successRate),y=successRate),data=target_india) +
-  geom_col(width=0.7,color="black",fill="#F22424",alpha=0.7) + coord_flip() +
+  geom_col(width=0.7,fill="#F22424",alpha=0.7) + coord_flip() +
   labs(x="Target of Terror attacks",y="% of Successul Attacks")
+
+
+
+
 
 ```
 
