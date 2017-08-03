@@ -324,14 +324,15 @@ I will create a dataframe consiting of year and the total number of kills for th
 ```{r}
 
 #creating a new data frame-grouping by year and summarising by total sum of kills for a year
-yearkillsIndia<-na.omit(indiaAttack) %>%group_by(iyear) %>% summarise(nkills=sum(nkill)) 
+yearkillsIndia<-na.omit(indiaAttack) %>%group_by(iyear) %>% summarise(nkills=sum(nkill))
 
 #Time series analysis
 theme_set(theme_bw())
 ggplot(aes(x = iyear, y =nkills),data=yearkillsIndia) +
   geom_point(color="purple",size=2) + 
   geom_line(color="#9124F2") + 
-  scale_x_continuous(limits=c(1975,2016),breaks=seq(1975,2016,4))
+  scale_x_continuous(limits=c(1975,2016),breaks=seq(1975,2016,4)) + 
+  labs(x="Year",y="number of Kills")
 
 #highest number of kills in year 2010
 
@@ -341,3 +342,4 @@ ggplot(aes(x = iyear, y =nkills),data=yearkillsIndia) +
 
 ```
 
+The above time series plot shows that the highest number of kills were in year __2010__.
