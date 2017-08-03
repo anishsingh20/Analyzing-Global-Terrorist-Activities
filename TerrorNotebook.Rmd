@@ -311,3 +311,35 @@ ggplot(aes(x = reorder(target,successRate),y=successRate),data=target_india) +
 
 ```
 
+
+
+-------------------
+
+
+
+####Number of kills over the year
+
+I will create a dataframe consiting of year and the total number of kills for that particular year.
+
+```{r}
+
+#creating a new data frame-grouping by year and summarising by total sum of kills for a year
+yearkillsIndia<-na.omit(indiaAttack) %>%group_by(iyear) %>% select(nkill)
+
+yearkillsIndia<- yearkillsIndia %>% summarise(nkills=sum(nkill)) 
+
+#Time series analysis
+theme_set(theme_bw())
+ggplot(aes(x = iyear, y =nkills),data=yearkillsIndia) +
+  geom_point(color="purple",size=2) + 
+  geom_line(color="#9124F2") + 
+  scale_x_continuous(limits=c(1975,2016),breaks=seq(1975,2016,4))
+
+#highest number of kills in year 2010
+
+
+
+
+
+```
+
