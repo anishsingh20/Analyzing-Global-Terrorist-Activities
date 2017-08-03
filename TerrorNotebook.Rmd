@@ -317,16 +317,14 @@ ggplot(aes(x = reorder(target,successRate),y=successRate),data=target_india) +
 
 
 
-####Number of kills over the year
+####Time series analysis of Number of kills over the Years
 
 I will create a dataframe consiting of year and the total number of kills for that particular year.
 
 ```{r}
 
 #creating a new data frame-grouping by year and summarising by total sum of kills for a year
-yearkillsIndia<-na.omit(indiaAttack) %>%group_by(iyear) %>% select(nkill)
-
-yearkillsIndia<- yearkillsIndia %>% summarise(nkills=sum(nkill)) 
+yearkillsIndia<-na.omit(indiaAttack) %>%group_by(iyear) %>% summarise(nkills=sum(nkill)) 
 
 #Time series analysis
 theme_set(theme_bw())
