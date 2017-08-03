@@ -275,3 +275,6 @@ ggplot(aes(y = successRate , x = reorder(type,successRate)),data = india_typeAtt
 
 ```
 
+The surprising thing is that the __Bombings/Explosions__ have the highest distribution i.e highest count amongst all other types of terror attacks but their success rate is less.The terrorist activity having highest success rate is __unarmed assaults__.
+
+
