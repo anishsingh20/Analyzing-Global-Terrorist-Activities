@@ -261,10 +261,12 @@ india_typeAttack<-with(indiaAttack,data.frame(table(attacktype1_txt,success)))
 india_typeAttack<-india_typeAttack %>% spread(success,Freq)
 india_typeAttack
 #Most Bombings occured in india followed by armed assaults.
-
 names(india_typeAttack)<-c("type","fail","success")
 
+india_typeAttack<-india_typeAttack%>% mutate(successRate=round((success/(success+fail))*100,2) , failRate=round((fail/(success+fail))*100,2))
+
 #plotting barplots now
+ggplot()
 
 
 
