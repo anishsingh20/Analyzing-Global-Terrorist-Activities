@@ -366,6 +366,12 @@ mostSuccessGroup<-as.data.frame(table(gnamedf$gname,gnamedf$success,
 mostSuccessGroup<-mostSuccessGroup %>% spread(Var2,Freq)
 names(mostSuccessGroup)<-c("gname","attacktype","Unsuccessful","success")
 
+SuccessGroup<-mostSuccessGroup %>% group_by(gname) %>%
+          select(success,Unsuccessful) %>%
+          arrange(desc(success)) %>%
+          top_n(20)
+                        
+
 
 
 
