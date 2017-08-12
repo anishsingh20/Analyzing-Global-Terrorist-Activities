@@ -359,7 +359,18 @@ gnamedf<-indiaAttack %>% group_by(gname) %>%
         select(success,attacktype1_txt,targtype1_txt,nkill,iyear,provstate,city)
 
 
-table(indiaAttack$gname)
+mostSuccessGroup<-as.data.frame(table(gnamedf$gname,gnamedf$success,
+                                      gnamedf$attacktype1_txt))
+
+#spreading the dataframe
+mostSuccessGroup<-mostSuccessGroup %>% spread(Var2,Freq)
+names(mostSuccessGroup)<-c("gname","attacktype","Unsuccessful","success")
+
+
+
+
+
+
 
 ```
 
