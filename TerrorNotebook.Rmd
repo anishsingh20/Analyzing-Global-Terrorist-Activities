@@ -1,6 +1,8 @@
 ---
 title: "Global Terrorism"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 ```{r,warning=FALSE,message=FALSE}
@@ -115,9 +117,10 @@ Kidnapping,Armed Assaults, Bombings__*.
 countrydf<-data.frame(table(terror$success,terror$country_txt))
 #Spreading the Dataframe
 countrydf<-countrydf %>% spread(Var1,Freq)
-countrydf<-countrydf %>% mutate(TotalAttacks=Successful +Unsuccessful)
-#renaming the columns
 names(countrydf)<-c("Country","Unsuccessful","Successful")
+countrydf<-countrydf %>% mutate(TotalAttacks=(Successful+Unsuccessful))
+#renaming the columns
+
 
 #FInding the Top countries with most succcessfully executed terror attacks
 
@@ -343,3 +346,20 @@ ggplot(aes(x = iyear, y =nkills),data=yearkillsIndia) +
 ```
 
 The above time series plot shows that the highest number of kills were in year __2010__.
+
+
+------------------------------
+
+###Group names associated with Terrorist activities
+
+Creating a new dataframe which is grouped by the __Group name__ .
+
+```{r}
+gnamedf<-indiaAttack %>% group_by(gname) %>%
+        select(success,attacktype1_txt,targtype1_txt,nkill,iyear,provstate,city)
+
+
+table(indiaAttack$gname)
+
+```
+
