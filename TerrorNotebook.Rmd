@@ -354,7 +354,7 @@ The above time series plot shows that the highest number of kills were in year _
 
 Creating a new dataframe which is grouped by the __Group name__ .
 
-```{r}
+```{r,message=FALSE,warning=FALSE,fig.height=6,fig.width=12}
 gnamedf<-indiaAttack %>% group_by(gname) %>%
         select(success,attacktype1_txt,targtype1_txt,nkill,iyear,provstate,city)
 
@@ -366,13 +366,22 @@ mostSuccessGroup<-as.data.frame(table(gnamedf$gname,gnamedf$success,
 mostSuccessGroup<-mostSuccessGroup %>% spread(Var2,Freq)
 names(mostSuccessGroup)<-c("gname","attacktype","Unsuccessful","success")
 
-SuccessGroup<-mostSuccessGroup %>% group_by(gname) %>%
-          select(success,Unsuccessful) %>%
-          arrange(desc(success)) %>%
-          top_n(20)
-                        
+SuccessGroup<-mostSuccessGroup%>% group_by(gname) %>%
+          select(success,Unsuccessful,attacktype) %>%
+          arrange(desc(success))
+         
 
+#considering only groups which have successful attack>20 and removing unknown groups                        
+SuccessGroup <- SuccessGroup %>% filter(gname!="Unknown",success>20)
 
+#Plotting a Barplot of Gropus vs number of successfull attacks 
+theme_set(theme_bw())
+ggplot(aes(x=reorder(gname,success),y=success),data=SuccessGroup) + 
+  geom_col(aes(fill=as.factor(attacktype))) + 
+  coord_flip()+
+  labs(x="Group Name",y="Number of Successful attacks",title="Groups and their successful attacks",
+       fill="Type of attack") + 
+  scale_y_continuous(breaks=seq(0,2000,200))
 
 
 
