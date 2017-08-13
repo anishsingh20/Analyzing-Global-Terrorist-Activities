@@ -339,6 +339,13 @@ ggplot(aes(x = iyear, y =nkills),data=yearkillsIndia) +
 
 #highest number of kills in year 2010
 
+#another time series chart using dygraphs
+require(dygraphs)
+dygraph(yearkillsIndia) %>%
+  dyHighlight(highlightCircleSize = 5, 
+              highlightSeriesBackgroundAlpha = 0.2,
+              hideOnMouseOut = FALSE)
+
 
 
 
@@ -376,13 +383,14 @@ SuccessGroup <- SuccessGroup %>% filter(gname!="Unknown",success>20)
 
 #Plotting a Barplot of Gropus vs number of successfull attacks 
 theme_set(theme_bw())
-ggplot(aes(x=reorder(gname,success),y=success),data=SuccessGroup) + 
-  geom_col(aes(fill=as.factor(attacktype))) + 
+p<-ggplot(aes(x=reorder(gname,success),y=success),data=SuccessGroup) + 
+  geom_col(aes(fill=attacktype)) + 
   coord_flip()+
   labs(x="Group Name",y="Number of Successful attacks",title="Groups and their successful attacks",
        fill="Type of attack") + 
   scale_y_continuous(breaks=seq(0,2000,200))
 
+p+scale_fill_brewer(palette = "Dark2")
 
 
 
