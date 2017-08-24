@@ -406,8 +406,20 @@ Now let's analyze the most used weapons which was used by the extremists to exec
 
 
 ```{r}
-weapondf<-indiaAttack %>% select(attacktype1_txt,success,gname,weaptype1_txt)
+#grouping by group_name
+weapondf<-na.omit(indiaAttack) %>% filter(gname!="Unknown") %>%
+  group_by(gname) %>%
+  select(attacktype1_txt,success,weaptype1_txt,nkill) %>%
+  arrange(desc(nkill)) %>%
+  top_n(50)
+
+ggplot(aes(x = gname))
+  
 table(weapondf$weaptype1_txt)
+by(weapondf$nkill,weapondf$weaptype1_txt,summary)
+
+
+
 
 ggplot(aes(x=reorder(weaptype1_txt,count)),data=weapondf) +
   geom_bar() + 
