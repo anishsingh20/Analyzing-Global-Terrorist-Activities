@@ -419,9 +419,11 @@ mostkilldf<- weapondf %>% group_by(gname) %>%
   top_n(20)
 
 #plot of most kills by which terrorist group
+theme_set(theme_bw())
 ggplot(aes(x = reorder(gname,sum_kill) , y = sum_kill ),data = mostkilldf) +
-  geom_col() + 
-  coord_flip()
+  geom_col(fill="red") + 
+  coord_flip() +
+  labs(x = "Terrorist group",y="total number of kills",title="Plot of total kills vs Terrorist Group" )
   
 
 
