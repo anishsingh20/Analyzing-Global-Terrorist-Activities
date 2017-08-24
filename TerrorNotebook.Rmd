@@ -409,11 +409,24 @@ Now let's analyze the most used weapons which was used by the extremists to exec
 #grouping by group_name
 weapondf<-na.omit(indiaAttack) %>% filter(gname!="Unknown") %>%
   group_by(gname) %>%
-  select(attacktype1_txt,success,weaptype1_txt,nkill) %>%
-  arrange(desc(nkill)) %>%
-  top_n(50)
+  select(success,nkill,weaptype1_txt ) %>%
+  arrange(desc(nkill))
 
-ggplot(aes(x = gname))
+#data frame with most number of kills and grouped by Group name
+mostkilldf<- weapondf %>% group_by(gname) %>%
+  summarise(sum_kill=sum(nkill)) %>%
+  arrange(desc(sum_kill)) %>%
+  top_n(20)
+
+#plot of most kills by which terrorist group
+ggplot(aes(x = reorder(gname,sum_kill) , y = sum_kill ),data = mostkilldf) +
+  geom_col() + 
+  coord_flip()
+  
+
+
+
+
   
 table(weapondf$weaptype1_txt)
 by(weapondf$nkill,weapondf$weaptype1_txt,summary)
