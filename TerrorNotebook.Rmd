@@ -402,10 +402,17 @@ p+scale_fill_brewer(palette = "Dark2")
 
 ### The most used Weapon and weapon types used in Attacks
 
-Now let's analyze the most used weapons which was used by the extremists to execute the attacks.
+Now let's analyze the most used weapons which was used by the extremists to execute the attacks.We need to create a separate data frame for arms and weapons used.
 
 
 ```{r}
+weapondf<-indiaAttack %>% select(attacktype1_txt,success,gname,weaptype1_txt)
+table(weapondf$weaptype1_txt)
+
+ggplot(aes(x=reorder(weaptype1_txt,count)),data=weapondf) +
+  geom_bar() + 
+  coord_flip()
+
 
 ```
 
