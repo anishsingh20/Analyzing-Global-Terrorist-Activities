@@ -18,8 +18,8 @@ require(tidyr)
 terror<-read_csv("F:/globalterrorismdb_0617dist.csv")
 
 #checking the structure of data
-str(terror)
-summary(terror)
+#str(terror)
+#summary(terror)
 #a wide data set with lots of columns
 
 
