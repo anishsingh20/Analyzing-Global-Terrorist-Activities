@@ -426,19 +426,14 @@ ggplot(aes(x = reorder(gname,sum_kill) , y = sum_kill ),data = mostkilldf) +
   labs(x = "Terrorist group",y="total number of kills",title="Plot of total kills vs Terrorist Group" )
   
 
+#data frame for weapons which killed most people
+weaponKill<-weapondf %>% group_by(weaptype1_txt) %>% 
+  summarise(sum_kill=sum(nkill)) %>%
+  filter(sum_kill >0 ) %>% 
+  arrange(desc(sum_kill))
+weaponKill
 
 
-
-  
-table(weapondf$weaptype1_txt)
-by(weapondf$nkill,weapondf$weaptype1_txt,summary)
-
-
-
-
-ggplot(aes(x=reorder(weaptype1_txt,count)),data=weapondf) +
-  geom_bar() + 
-  coord_flip()
 
 
 ```
