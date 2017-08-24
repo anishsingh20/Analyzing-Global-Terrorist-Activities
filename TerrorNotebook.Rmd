@@ -396,4 +396,16 @@ p+scale_fill_brewer(palette = "Dark2")
 
 
 ```
+ 
+-----------------------
+
+
+### The most used Weapon and weapon types used in Attacks
+
+Now let's analyze the most used weapons which was used by the extremists to execute the attacks.
+
+
+```{r}
+
+```
 
