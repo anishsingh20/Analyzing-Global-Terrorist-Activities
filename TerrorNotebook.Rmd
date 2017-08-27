@@ -282,6 +282,11 @@ names(yearsuccess)<-c("year","fail",'success')
 #generating numeric year column
 year<-data.frame(seq(1970,1992))
 year[24:46,]<-seq(1994,2016)
+names(year)<-c("year")
+
+#adding the year df to yearsuccess df
+yearsuccess$attack<-year
+
 
 
 
