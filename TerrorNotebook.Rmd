@@ -195,12 +195,15 @@ ggplot(aes(x = reorder(Country,-TotalAttacks),y=TotalAttacks),data = leastFilter
 ```{r}
 worldTargetdf<-data.frame(table(terror$targtype1_txt)) %>% arrange(desc(Freq))
 
-
+theme_set(theme_bw())
+ggplot(aes(x = reorder(Var1,Freq),y = Freq),data = worldTargetdf) +
+  geom_col(fill='purple') +
+  coord_flip()
 
 
 
 ```
-
+*__As we can notice from the plot above the most targetted entities were Citizens,then Military,Police ,Goverment and Businesses.__*
 
 
 
