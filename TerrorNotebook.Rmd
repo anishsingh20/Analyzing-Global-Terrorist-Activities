@@ -235,10 +235,31 @@ Creating a data frame with only some targetted variables.
 UStarg<-na.omit(SpecificTargdf) %>% filter(country_txt=="United States")
 summary(UStarg$nkill)
 
-
 ```
 
 
+####City with most successful attacks
+
+
+```{r}
+uscitydf<-data.frame(table(UStarg$city,UStarg$success))
+
+uscitydf<-uscitydf %>% spread(Var2,Freq)
+names(uscitydf)<-c("city",'unsuccessful','success')
+
+uscitysuccess<-uscitydf %>% group_by(city) %>%
+                          summarise(success=mean(success)) %>%
+                          arrange(desc(success)) %>%
+                          top_n(30)
+#most attacks in New York
+
+
+
+
+
+
+
+```
 
 
 
