@@ -275,8 +275,32 @@ Creating a dataframe with year and number of attacks.
 
 ```{r}
 
-yearsuccess<-data.frame(table(as.factor(UStarg$iyear),UStarg$success))
+yearsuccess<-data.frame(table(UStarg$iyear,UStarg$success))
+yearsuccess<-yearsuccess %>% spread(Var2,Freq)
+names(yearsuccess)<-c("year","fail",'success')
 
+#generating numeric year column
+year<-data.frame(seq(1970,1992))
+year[24:46,]<-seq(1994,2016)
+
+
+
+
+
+#Plotting the time series splot
+success=ggplot(data=yearsuccess,aes(x=year,y=success)) +
+  geom_point(color="purple",size=2) + 
+  geom_line(color="#9124F2") + 
+  #limits=c(1,46),breaks=seq(1,46,4)) 
+  
+
+fail=ggplot(data=yearsuccess,aes(x=as.numeric(year),y=fail)) +
+  geom_point(color="purple",size=2) + 
+  geom_line(color="#9124F2") + 
+  scale_x_continuous(limits=c(1,46),breaks=seq(1,46,4))
+
+success
+fail
 
 
 ```
