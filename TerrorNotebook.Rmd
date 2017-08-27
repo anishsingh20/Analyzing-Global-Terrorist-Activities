@@ -216,7 +216,7 @@ ggplot(aes(x = reorder(Var1,Freq),y = Freq),data = worldTargetdf) +
 countryList<-c("United States","United Kingdom")
 
 SpecificTargdf<-terror %>% select(success,target1,targtype1_txt,attacktype1_txt,
-                                  country_txt,city,gname,nkill) %>% 
+                                  country_txt,city,iyear,gname,nkill) %>% 
                           filter(country_txt %in% countryList)
 ```
 
@@ -265,7 +265,23 @@ ggplot(aes(x=reorder(city,success),y=success),data=uscitysuccess) +
 
 
 
+
 ```
+
+
+####Time series of Year and number of succesful attacks in USA
+
+Creating a dataframe with year and number of attacks.
+
+```{r}
+
+yearsuccess<-data.frame(table(as.factor(UStarg$iyear),UStarg$success))
+
+
+
+```
+
+
 
 
 
