@@ -186,6 +186,26 @@ ggplot(aes(x = reorder(Country,-TotalAttacks),y=TotalAttacks),data = leastFilter
 ```
 
 
+----------
+
+
+### What were the target of the Terrorists?
+
+
+```{r}
+worldTargetdf<-data.frame(table(terror$targtype1_txt)) %>% arrange(desc(Freq))
+
+
+
+
+
+```
+
+
+
+
+
+
 ---------------------
 
 
