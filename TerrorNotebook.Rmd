@@ -292,20 +292,22 @@ yearsuccess$attack<-year
 
 
 
-#Plotting the time series splot
-success=ggplot(data=yearsuccess,aes(x=year,y=success)) +
-  geom_point(color="purple",size=2) + 
-  geom_line(color="#9124F2") + 
-  #limits=c(1,46),breaks=seq(1,46,4)) 
-  
 
-fail=ggplot(data=yearsuccess,aes(x=as.numeric(year),y=fail)) +
-  geom_point(color="purple",size=2) + 
-  geom_line(color="#9124F2") + 
-  scale_x_continuous(limits=c(1,46),breaks=seq(1,46,4))
+#Plotting the time series splot
+success=ggplot(data=yearsuccess,aes(x=attack,y=success)) +
+  geom_point(color="#E80110",size=2) + 
+  geom_line(color="#E80110") + 
+  scale_x_continuous(limits=c(1970,2016),breaks=seq(1970,2016,4)) 
 
 success
-fail
+  
+
+fail=ggplot(data=yearsuccess,aes(x=attack,y=fail)) +
+  geom_point(color="#E18001",size=2) + 
+  geom_line(color="#E18001") + 
+  scale_x_continuous(limits=c(1970,2016),breaks=seq(1970,2016,4)) 
+
+ fail
 
 
 ```
