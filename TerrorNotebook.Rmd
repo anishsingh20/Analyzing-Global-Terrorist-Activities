@@ -216,7 +216,7 @@ ggplot(aes(x = reorder(Var1,Freq),y = Freq),data = worldTargetdf) +
 countryList<-c("United States","United Kingdom")
 
 SpecificTargdf<-terror %>% select(success,target1,targtype1_txt,attacktype1_txt,
-                                  country_txt,city,gname) %>% 
+                                  country_txt,city,gname,nkill) %>% 
                           filter(country_txt %in% countryList)
 ```
 
@@ -229,6 +229,14 @@ The above data frame consists only attacks on 2 major developed countries i.e __
 
 ###Analyzing attack in USA
 
+Creating a data frame with only some targetted variables.
+
+```{r}
+UStarg<-na.omit(SpecificTargdf) %>% filter(country_txt=="United States")
+summary(UStarg$nkill)
+
+
+```
 
 
 
