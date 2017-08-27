@@ -252,6 +252,12 @@ uscitysuccess<-uscitydf %>% group_by(city) %>%
                           arrange(desc(success)) %>%
                           top_n(30)
 #most attacks in New York
+theme_set(theme_minimal())
+ggplot(aes(x=reorder(city,success),y=success),data=uscitysuccess) +
+  geom_col(fill="#131D75")+
+  coord_flip() +
+  labs(x="City",y="Number of successfull attacks")
+
 
 
 
