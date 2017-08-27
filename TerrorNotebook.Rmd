@@ -213,19 +213,31 @@ ggplot(aes(x = reorder(Var1,Freq),y = Freq),data = worldTargetdf) +
 ###Creating a new Dataframe
 
 ```{r}
-countryList<-c("United States","India","Pakistan","United Kingdom","Iraq")
+countryList<-c("United States","United Kingdom")
 
-SpecificTargdf<-terror %>% select(target1,targtype1_txt,attacktype1_txt,
-                                  country_txt,city) %>% 
+SpecificTargdf<-terror %>% select(success,target1,targtype1_txt,attacktype1_txt,
+                                  country_txt,city,gname) %>% 
                           filter(country_txt %in% countryList)
-
-
 ```
 
-
+The above data frame consists only attacks on 2 major developed countries i.e __United States of America__ and __United Kingdom__ which were in the top 20 list of most successfully executed terrorist attacks.
 
 
 ---------------------
+
+
+
+###Analyzing attack in USA
+
+
+
+
+
+
+
+
+
+-----------------
 
 
 ###Analyzing attacks in India
