@@ -307,7 +307,8 @@ success
 fail=ggplot(data=yearsuccess,aes(x=attack,y=fail)) +
   geom_point(color="#E18001",size=2) + 
   geom_line(color="#E18001") + 
-  scale_x_continuous(limits=c(1970,2016),breaks=seq(1970,2016,4)) 
+  scale_x_continuous(limits=c(1970,2016),breaks=seq(1970,2016,4))  +
+  labs(x="Year",y="Number of failed attacks",title="Time series of failed attacks in USA")
 
  fail
 
