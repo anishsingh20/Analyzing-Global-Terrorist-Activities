@@ -1,9 +1,13 @@
 ---
-title: "Global Terrorism"
+title: "Analyzing global terrorist activities"
 output:
   html_document: default
   html_notebook: default
+  author: Anish Singh Walia
 ---
+
+
+
 
 The main aim of this analytics project is to get out the hidden trends and unknown information about the terrorist attacks that took place in the world from 1970-2016 and understand *why they happened,where they happended,which countires were most affected by it,what were the most targetted entities of the terrorist groups, the most violent and active terrorist groups in the world throught* etc and lots more.
 
