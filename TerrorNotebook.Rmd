@@ -5,6 +5,10 @@ output:
   html_notebook: default
 ---
 
+The main aim of this analytics project is to get out the hidden trends and unknown information about the terrorist attacks that took place in the world from 1970-2016 and understand *why they happened,where they happended,which countires were most affected by it,what were the most targetted entities of the terrorist groups, the most violent and active terrorist groups in the world throught* etc and lots more.
+
+And then also some __rolling down__ to specific and most affected countries with terrorist activities in the past such as India,USA,UK etc.
+
 ```{r,warning=FALSE,message=FALSE}
 #analyzing the GLobal Terrorist Activities
 require(data.table)
@@ -31,7 +35,10 @@ terror<-read_csv("F:/globalterrorismdb_0617dist.csv")
 
 
 
-Starting with Descriptive Analytics
+##Starting with Descriptive Analytics
+
+
+
 
 ```{r}
 #checking how many terrorist attacks were successfull
@@ -210,7 +217,9 @@ ggplot(aes(x = reorder(Var1,Freq),y = Freq),data = worldTargetdf) +
 
 -----------
 
-###Creating a new Dataframe
+
+
+##Creating a new Dataframe
 
 ```{r}
 countryList<-c("United States","United Kingdom")
@@ -227,7 +236,8 @@ The above data frame consists only attacks on 2 major developed countries i.e __
 
 
 
-###Analyzing attack in USA
+
+##Analyzing attack in USA
 
 Creating a data frame with only some targetted variables.
 
@@ -325,7 +335,10 @@ fail=ggplot(data=yearsuccess,aes(x=attack,y=fail)) +
 -----------------
 
 
-###Analyzing attacks in India
+
+
+
+##Analyzing attacks in India
 
 I will create a new data frame for India by filtering and selecting only the relevant columns from the original data frame.
 
