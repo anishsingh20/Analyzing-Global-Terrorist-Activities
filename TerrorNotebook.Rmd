@@ -202,9 +202,25 @@ ggplot(aes(x = reorder(Var1,Freq),y = Freq),data = worldTargetdf) +
 
 
 
+
 ```
+
 *__As we can notice from the plot above the most targetted entities were Citizens,then Military,Police ,Goverment and Businesses.__*
 
+
+-----------
+
+###Creating a new Dataframe
+
+```{r}
+countryList<-c("United States","India","Pakistan","United Kingdom","Iraq")
+
+SpecificTargdf<-terror %>% select(target1,targtype1_txt,attacktype1_txt,
+                                  country_txt,city) %>% 
+                          filter(country_txt %in% countryList)
+
+
+```
 
 
 
